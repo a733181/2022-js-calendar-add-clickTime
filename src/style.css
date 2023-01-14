@@ -1,0 +1,121 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  background: #666;
+  color: #eee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar {
+  width: 800px;
+  background: #222227;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.month {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.week {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.week div {
+  width: calc(100% / 7);
+}
+
+.days {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.days div {
+  width: calc(100% / 7);
+  height: 100px;
+  border: 1px solid #eee;
+  position: relative;
+}
+.days span {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+}
+
+.days .today {
+  color: orange;
+}
+
+.days p {
+  font-size: 10px;
+}
+
+.next,
+.month-text {
+  cursor: pointer;
+}
+
+.next:hover,
+.month-text:hover {
+  color: orange;
+}
+
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgb(0, 0, 0, 0.6);
+  z-index: 1;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-active {
+  display: flex;
+}
+
+.modal-container {
+  width: 300px;
+  height: 600px;
+  background: white;
+  z-index: 2;
+  border: 1px solid #eee;
+  border-radius: 8px;
+}
+
+.modal-close {
+  font-size: 30px;
+  text-align: right;
+  margin-right: 10px;
+}
+
+.modal-container div {
+  padding: 10px 0;
+  margin: 5px 0;
+  border: 1px solid #eee;
+  text-align: center;
+}
