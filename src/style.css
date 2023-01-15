@@ -105,6 +105,8 @@ h1 {
   z-index: 2;
   border: 1px solid #eee;
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
 }
 
 .modal-close {
@@ -118,4 +120,8 @@ h1 {
   margin: 5px 0;
   border: 1px solid #eee;
   text-align: center;
+  background-color: #555;
+  width: 90%;
+  margin: auto;
+  color: white;
 }

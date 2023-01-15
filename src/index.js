@@ -102,26 +102,32 @@ const renderList = () => {
   const allDayEl = document.querySelectorAll('.days div');
   allDayEl.forEach((day) => {
     const time = day.dataset.time;
+    let workClickDate = '';
+    const workListsDate = [];
 
     workLists.forEach((work) => {
       if (time !== work.clickDate) return;
+      workClickDate = work.clickDate;
 
-      const clickDay = new Date(clickDate).getDate();
-      day.innerHTML = `<span>${clickDay}</span><p>${work.workTime}:00-${
-        work.workTime + 1
-      }:00</p>`;
+      workListsDate.push(`<p>${work.workTime}:00-${work.workTime + 1}:00</p>`);
     });
+    if (time === workClickDate) {
+      const clickDay = new Date(time).getDate();
+      day.innerHTML = `<span>${clickDay}</span>` + workListsDate.join('');
+    }
   });
 };
 
 nextEl.addEventListener('click', () => {
   date.setMonth(date.getMonth() + 1);
   renderCalendar();
+  renderList();
 });
 monthEl.addEventListener('click', () => {
   date.setFullYear(today.getFullYear());
   date.setMonth(today.getMonth());
   renderCalendar();
+  renderList();
 });
 
 const renderWorkTimesBtn = () => {
@@ -145,7 +151,11 @@ modalCloseEl.addEventListener('click', () => {
 });
 
 modalContainerEl.addEventListener('click', (e) => {
-  if (typeof Number(e.target.dataset.index) !== 'number') return;
+  if (
+    typeof Number(e.target.dataset.index) !== 'number' ||
+    e.target.dataset.index === undefined
+  )
+    return;
   workLists.push({
     clickDate,
     workTime: workTimes[e.target.dataset.index],
